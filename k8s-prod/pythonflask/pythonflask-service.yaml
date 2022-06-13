@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythonflask
+  namespace: osiguranje-prod
+  labels:
+    service: pythonflask
+spec:
+  ports:
+    - name: "9999"
+      port: 9999
+      targetPort: 5000
+  selector:
+    service: pythonflask
+status:
+  loadBalancer: {}

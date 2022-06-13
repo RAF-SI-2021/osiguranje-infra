@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6972cda9-bb90-4299-8418-34f0ff064e14" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Namespace.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/NodePort.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend-networkpolicy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/backend-networkpolicy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buyingmarket-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/buying-market/buyingmarket-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buyingmarket-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/buying-market/buyingmarket-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buyingmarket-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/buying-market/buyingmarket-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/db-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/eureka-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/eureka-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eureka-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/eureka/eureka-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/frontend-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/gateway-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqldb-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/db/mysqldb-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mysqldb-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/db/mysqldb-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nginx-networkpolicy.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/nginx-networkpolicy.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonflask-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonflask/pythonflask-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonflask-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonflask/pythonflask-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonflask-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pythonflask/pythonflask-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/securities/securities-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/securities/securities-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/securities-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/securities/securities-service.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usercrud-deployment.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/usercrud/usercrud-deployment.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usercrud-persistentvolumeclaim.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/usercrud/usercrud-persistentvolumeclaim.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/usercrud-service.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/usercrud/usercrud-service.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2AWbo2WefEDz2Oz9O2iXLyow1ii" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/usercrud" />
+      <recent name="$PROJECT_DIR$/securities" />
+      <recent name="$PROJECT_DIR$/pythonflask" />
+      <recent name="$PROJECT_DIR$/db" />
+      <recent name="$PROJECT_DIR$/gateway" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6972cda9-bb90-4299-8418-34f0ff064e14" name="Changes" comment="" />
+      <created>1655128460077</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1655128460077</updated>
+      <workItem from="1655128461315" duration="3853000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
