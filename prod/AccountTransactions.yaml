@@ -47,6 +47,16 @@ spec:
                 configMapKeyRef:
                   name: main-configmap
                   key: API_USERCRUD
+            - name: API_SECURITIES
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_SECURITIES
+            - name: API_BUYINGMARKET
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_BUYINGMARKET
 ---
 apiVersion: v1
 kind: Service
