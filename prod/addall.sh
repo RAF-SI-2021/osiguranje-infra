@@ -1,5 +1,5 @@
-kubectl apply -f Gateway.yaml
 kubectl apply -f Namespace.yaml
+kubectl apply -f Gateway.yaml
 kubectl apply -f Configmap.yaml
 kubectl apply -f Ingress.yaml
 kubectl apply -f Mysql.yaml

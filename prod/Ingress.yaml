@@ -24,7 +24,6 @@ kind: Ingress
 metadata:
   name: osiguranje-ingress-frontend
   namespace: osiguranje-prod
-  annotations:
 spec:
   ingressClassName: nginx
   rules:
