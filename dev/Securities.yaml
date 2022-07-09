@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: securities
+  namespace: osiguranje-dev
+  labels:
+    service: securities
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: securities
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: securities
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/securities:latest
+          name: securities
+          ports:
+            - name: securities
+              containerPort: 2000
+          resources: {}
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_PASSWORD
+            - name: REDIS_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: REDIS_HOSTNAME
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: REDIS_PORT
+            - name: API_TRANSACTION
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_TRANSACTION
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: securities
+  namespace: osiguranje-dev
+  labels:
+    service: securities
+spec:
+  ports:
+    - port: 2000
+      protocol: TCP
+      targetPort: 2000
+  selector:
+    service: securities
+

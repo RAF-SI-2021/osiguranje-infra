@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accttx
+  namespace: osiguranje-dev
+  labels:
+    service: accttx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: accttx
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: accttx
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/account-transaction:latest
+          name: accttx
+          ports:
+            - name: accttx
+              containerPort: 8093
+          resources: {}
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_PASSWORD
+            - name: API_USERCRUD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_USERCRUD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: accttx
+  namespace: osiguranje-dev
+  labels:
+    service: accttx
+spec:
+  ports:
+    - port: 8093
+      protocol: TCP
+      targetPort: 8093
+  selector:
+    service: accttx
+
