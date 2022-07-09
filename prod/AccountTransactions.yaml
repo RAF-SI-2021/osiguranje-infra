@@ -20,6 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - image: ghcr.io/raf-si-2021/osiguranjeraf2022/account-transaction:latest
+          imagePullPolicy: Always
           name: accttx
           ports:
             - name: accttx
