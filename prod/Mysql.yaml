@@ -47,7 +47,7 @@ spec:
         service: mysqldb
     spec:
       containers:
-        - image: mysql:3.2.8
+        - image: mysql:8.0.28
           name: mysqldb
           ports:
             - containerPort: 3306
