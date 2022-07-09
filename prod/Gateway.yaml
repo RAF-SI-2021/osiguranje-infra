@@ -80,7 +80,7 @@ metadata:
   labels:
     service: gateway
 spec:
-  clusterIP: 10.96.0.3
+  clusterIP: 10.96.0.14
   ports:
     - port: 8080
       protocol: TCP

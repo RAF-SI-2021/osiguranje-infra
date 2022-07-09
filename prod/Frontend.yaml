@@ -19,7 +19,7 @@ spec:
     spec:
       restartPolicy: Always
       hostAliases:
-        - ip: "10.96.0.3"
+        - ip: "10.96.0.14"
           hostnames:
             - "host.docker.internal"
       containers:
