@@ -39,9 +39,9 @@ metadata:
     service: frontend
 spec:
   ports:
-    - port: 8092
+    - port: 80
       protocol: TCP
-      targetPort: 8092
+      targetPort: 80
   selector:
     service: frontend
 
