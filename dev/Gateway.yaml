@@ -61,11 +61,11 @@ spec:
                 configMapKeyRef:
                   name: main-configmap
                   key: ZUUL_ROUTES_STOCKINFO_URL
-            - name: ZUUL_ROUTES_TRANSACTION_URL
+            - name: ZUUL_ROUTES_ACCOUNT-TRANSACTION_URL
               valueFrom:
                 configMapKeyRef:
                   name: main-configmap
-                  key: ZUUL_ROUTES_TRANSACTION_URL
+                  key: ZUUL_ROUTES_ACCOUNT-TRANSACTION_URL
             - name: ZUUL_ROUTES_OTC_URL
               valueFrom:
                 configMapKeyRef:

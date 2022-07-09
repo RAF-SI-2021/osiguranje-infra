@@ -56,6 +56,11 @@ spec:
                 configMapKeyRef:
                   name: main-configmap
                   key: API_TRANSACTION
+            - name: API_STOCKINFO
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_STOCKINFO
 ---
 apiVersion: v1
 kind: Service

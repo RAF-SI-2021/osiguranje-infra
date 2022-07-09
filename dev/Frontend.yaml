@@ -23,7 +23,8 @@ spec:
           hostnames:
             - "host.docker.internal"
       containers:
-        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/frontend:latest
+        - image: osiguranjeraf2022/frontend
+          imagePullPolicy: Never
           name: frontend
           ports:
             - name: frontend
@@ -39,9 +40,9 @@ metadata:
     service: frontend
 spec:
   ports:
-    - port: 8092
+    - port: 80
       protocol: TCP
-      targetPort: 8092
+      targetPort: 80
   selector:
     service: frontend
 

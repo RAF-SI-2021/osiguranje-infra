@@ -20,6 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - image: ghcr.io/raf-si-2021/osiguranjeraf2022/otc:latest
+          imagePullPolicy: Always
           name: otc
           ports:
             - name: otc

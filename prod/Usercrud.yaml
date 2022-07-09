@@ -20,6 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - image: ghcr.io/raf-si-2021/osiguranjeraf2022/user-crud:latest
+          imagePullPolicy: Always
           name: usercrud
           ports:
             - name: usercrud

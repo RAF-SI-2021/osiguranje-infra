@@ -20,6 +20,7 @@ spec:
       restartPolicy: Always
       containers:
         - image: ghcr.io/raf-si-2021/osiguranjeraf2022/account-transaction:latest
+          imagePullPolicy: Always
           name: accttx
           ports:
             - name: accttx
@@ -46,6 +47,16 @@ spec:
                 configMapKeyRef:
                   name: main-configmap
                   key: API_USERCRUD
+            - name: API_SECURITIES
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_SECURITIES
+            - name: API_BUYINGMARKET
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_BUYINGMARKET
 ---
 apiVersion: v1
 kind: Service
