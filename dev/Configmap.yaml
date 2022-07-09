@@ -1,0 +1,28 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: main-configmap
+  namespace: osiguranje-dev
+data:
+  USERCRUD_PORT: "8091"
+  SECURITIES_PORT: "2000"
+  TRANSACTION_PORT: "8093"
+  BUYINGMARKET_PORT: "8092"
+  OTC_PORT: "8094"
+  MYSQL_PORT: "3306"
+  MYSQL_USER: "root"
+  MYSQL_PASSWORD: "YZUhhNEXfAW8j7Qc"
+  MYSQL_DATABASE: "osiguranje"
+  MYSQL_URL: "jdbc:mysql://mysqldb:3306/osiguranje?allowPublicKeyRetrieval=true&useSSL=false"
+  API_USERCRUD: "http://usercrud:8091"
+  API_SECURITIES: "http://securities:2000"
+  API_TRANSACTION: "http://accttx:8093"
+  ZUUL_ROUTES_USER_URL: "http://usercrud:8091/api/users"
+  ZUUL_ROUTES_SECURITIES_URL: "http://securities:2000/api"
+  ZUUL_ROUTES_BUYINGMARKET_URL: "http://buyingmarket:8092/api"
+  ZUUL_ROUTES_STOCKINFO_URL: "http://pythonflask:9999"
+  ZUUL_ROUTES_TRANSACTION_URL: "http://accttx:8093/api"
+  ZUUL_ROUTES_OTC_URL: "http://otc:8094/api"
+  REDIS_HOSTNAME: "redisdb"
+  REDIS_PORT: "6379"
+  CACHEEXPIRYTIME: "60"

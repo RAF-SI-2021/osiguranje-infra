@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: otc
+  namespace: osiguranje-dev
+  labels:
+    service: otc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: otc
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: otc
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/otc:latest
+          name: otc
+          ports:
+            - name: otc
+              containerPort: 8094
+          resources: {}
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_PASSWORD
+            - name: API_TRANSACTION
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_TRANSACTION
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: otc
+  namespace: osiguranje-dev
+  labels:
+    service: otc
+spec:
+  ports:
+    - port: 8094
+      protocol: TCP
+      targetPort: 8094
+  selector:
+    service: otc
+

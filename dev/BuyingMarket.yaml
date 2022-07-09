@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buyingmarket
+  namespace: osiguranje-dev
+  labels:
+    service: buyingmarket
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: buyingmarket
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: buyingmarket
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/buying-market:latest
+          name: buyingmarket
+          ports:
+            - name: buyingmarket
+              containerPort: 8092
+          resources: {}
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_PASSWORD
+            - name: API_USERCRUD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_USERCRUD
+            - name: API_SECURITIES
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_SECURITIES
+            - name: API_TRANSACTION
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: API_TRANSACTION
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: buyingmarket
+  namespace: osiguranje-dev
+  labels:
+    service: buyingmarket
+spec:
+  ports:
+    - port: 8092
+      protocol: TCP
+      targetPort: 8092
+  selector:
+    service: buyingmarket
+

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pythonflask
+  namespace: osiguranje-dev
+  labels:
+    service: pythonflask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: pythonflask
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: pythonflask
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/python-flask:latest
+          name: pythonflask
+          ports:
+            - name: pythonflask
+              containerPort: 9999
+          resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: pythonflask
+  namespace: osiguranje-dev
+  labels:
+    service: pythonflask
+spec:
+  ports:
+    - port: 9999
+      protocol: TCP
+      targetPort: 9999
+  selector:
+    service: pythonflask
+

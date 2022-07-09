@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: osiguranje-dev
+  labels:
+    service: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: frontend
+    spec:
+      restartPolicy: Always
+      hostAliases:
+        - ip: "10.96.0.3"
+          hostnames:
+            - "host.docker.internal"
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/frontend:latest
+          name: frontend
+          ports:
+            - name: frontend
+              containerPort: 80
+          resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  namespace: osiguranje-dev
+  labels:
+    service: frontend
+spec:
+  ports:
+    - port: 8092
+      protocol: TCP
+      targetPort: 8092
+  selector:
+    service: frontend
+

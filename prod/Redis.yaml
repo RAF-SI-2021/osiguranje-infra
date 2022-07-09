@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redisdb
+  namespace: osiguranje-prod
+  labels:
+    service: redisdb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: redisdb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: redisdb
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: redis:3.2.8
+          name: redisdb
+          ports:
+            - name: redisdb
+              containerPort: 6379
+          resources: {}
+          env:
+            - name: REDIS_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: REDIS_HOSTNAME
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: REDIS_PORT
+            - name: CACHEEXPIRYTIME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: CACHEEXPIRYTIME
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redisdb
+  namespace: osiguranje-prod
+  labels:
+    service: redisdb
+spec:
+  ports:
+    - port: 6379
+      protocol: TCP
+      targetPort: 6379
+  selector:
+    service: redisdb
+

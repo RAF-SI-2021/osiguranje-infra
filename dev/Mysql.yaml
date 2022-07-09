@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysqldb
+  namespace: osiguranje-dev
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysqldb
+  namespace: osiguranje-dev
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysqldb
+  namespace: osiguranje-dev
+  labels:
+    service: mysqldb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: mysqldb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: mysqldb
+    spec:
+      containers:
+        - image: arm64v8/mysql
+          name: mysqldb
+          ports:
+            - containerPort: 3306
+          resources: {}
+          volumeMounts:
+            - name: mysqldb
+              mountPath: /var/lib/mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_PASSWORD
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_DATABASE
+      restartPolicy: Always
+      volumes:
+        - name: mysqldb
+          persistentVolumeClaim:
+            claimName: mysqldb
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysqldb
+  namespace: osiguranje-dev
+  labels:
+    service: mysqldb
+spec:
+  ports:
+    - port: 3306
+      protocol: TCP
+      targetPort: 3306
+  selector:
+    service: mysqldb

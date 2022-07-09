@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usercrud
+  namespace: osiguranje-dev
+  labels:
+    service: usercrud
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: usercrud
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: usercrud
+    spec:
+      restartPolicy: Always
+      containers:
+        - image: ghcr.io/raf-si-2021/osiguranjeraf2022/user-crud:latest
+          name: usercrud
+          ports:
+            - name: usercrud
+              containerPort: 8091
+          resources: {}
+          env:
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_URL
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_USER
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: main-configmap
+                  key: MYSQL_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: usercrud
+  namespace: osiguranje-dev
+  labels:
+    service: usercrud
+spec:
+  ports:
+    - port: 8091
+      protocol: TCP
+      targetPort: 8091
+  selector:
+    service: usercrud
+
